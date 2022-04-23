@@ -14,30 +14,46 @@
 
 #include "src/SaturnLib/SaturnLib.h"
 
-//Saturn pins - Port 1
-#define SAT1_TH A2
-#define SAT1_TR 7
-#define SAT1_TL A1
-#define SAT1_D0 A4
-#define SAT1_D1 A5
-#define SAT1_D2 A3
-#define SAT1_D3 A0
+////Saturn pins - Port 1
+//#define SAT1_TH 5 //S0
+//#define SAT1_TR 3 //S1
+//#define SAT1_TL 2 //S2 (not connected in bliss adapters)
+//#define SAT1_D0 9
+//#define SAT1_D1 8
+//#define SAT1_D2 7
+//#define SAT1_D3 6
+//
+////Saturn pins - Port 2
+//#define SAT2_TH 14 //S0
+//#define SAT2_TR 16 //S1
+//#define SAT2_TL A3 //S2 (not connected in bliss adapters)
+//#define SAT2_D0 A2
+//#define SAT2_D1 A1
+//#define SAT2_D2 A0
+//#define SAT2_D3 15
 
-//Saturn pins - Port 2
-#define SAT2_TH 8
-#define SAT2_TR 9
-#define SAT2_TL 5
-#define SAT2_D0 2
-#define SAT2_D1 3
-#define SAT2_D2 4
-#define SAT2_D3 6
+//Genesis pins - Port 1
+#define SAT1_TH 3 //A
+#define SAT1_TR 2 //SELECT
+#define SAT1_TL 5 //S2 (not connected in bliss adapters)
+#define SAT1_D0 9
+#define SAT1_D1 8
+#define SAT1_D2 7
+#define SAT1_D3 6
+
+//Genesis pins - Port 2
+#define SAT2_TH 16 //A
+#define SAT2_TR 10 //S1
+#define SAT2_TL 14 //S2 (not connected in bliss adapters)
+#define SAT2_D0 A2
+#define SAT2_D1 A1
+#define SAT2_D2 A0
+#define SAT2_D3 15
 
 SaturnPort<SAT1_D0, SAT1_D1, SAT1_D2, SAT1_D3, SAT1_TH, SAT1_TR, SAT1_TL> saturn1;
 SaturnPort<SAT2_D0, SAT2_D1, SAT2_D2, SAT2_D3, SAT2_TH, SAT2_TR, SAT2_TL> saturn2;
 
 #define SATURN_USB_BUTTON_COUNT 10
-
-uint8_t totalUsb = 2;
 
 void resetJoyValues(const uint8_t i) {
     if (i >= totalUsb)

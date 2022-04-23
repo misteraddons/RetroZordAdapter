@@ -37,6 +37,7 @@
 
 //#include <PsxControllerHwSpi.h>
 #include "src/PsxNewLib/PsxControllerHwSpi.h"
+//#include "src/PsxNewLib/PsxControllerBitBang.h"
 #include "src/Mouse/MouseAbsolute.h"
 #include "src/Mouse/MouseRelative.h"
 
@@ -44,6 +45,10 @@
 //#define GUNCON_FORCE_MODE 2
 
 const byte PIN_PS2_ATT = 11;
+//const byte PIN_PS2_ATT = A1;
+//const byte PIN_PS2_CMD = 1; //Used for flashing
+//const byte PIN_PS2_DAT = 0; //Used for flashing
+//const byte PIN_PS2_CLK = 2;
 
 const unsigned long POLLING_INTERVAL = 1000U / 400U;//needs more testing
 
@@ -51,6 +56,7 @@ const unsigned long POLLING_INTERVAL = 1000U / 400U;//needs more testing
 //#define ENABLE_SERIAL_DEBUG
 
 PsxControllerHwSpi<PIN_PS2_ATT> psx;
+//PsxControllerBitBang<PIN_PS2_ATT, PIN_PS2_CMD, PIN_PS2_DAT, PIN_PS2_CLK> psx;
 
 const byte ANALOG_DEAD_ZONE = 25U;
 
@@ -747,7 +753,7 @@ void psxSetup() {
     usbStick[0] = new Joystick_ (
       "RZordPsNeGcon",
       JOYSTICK_DEFAULT_REPORT_ID,
-      JOYSTICK_TYPE_JOYSTICK,
+      JOYSTICK_TYPE_GAMEPAD,
       4,      // buttonCount
       1,      // hatSwitchCount (0-2)
       false,  // use16bitvalue
